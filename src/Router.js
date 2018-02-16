@@ -8,8 +8,8 @@ const RouterComponent = () => {
 	return(
 		<Router>
 			<Scene key="numbers">
-				<Scene key="home" component={Home} hideNavBar initial />
-				<Scene key="formulae" component={Formulae} title="Formulae" />
+				<Scene key="Home" component={Home} hideNavBar initial />
+				<Scene key="Formulae" component={Formulae} title="Formulae" />
 			</Scene>
 		</Router>
 	)
