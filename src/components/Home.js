@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, TextInput, Keyboard } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import styles from '../styles/Home' 
-
+import styles from '../styles/Home';
+import { KeyBoardNumber } from './common'
 class Home extends Component{
 	state={
 
@@ -41,24 +41,24 @@ class Home extends Component{
 					
 					<View style={styles.keyboard}>
 						<View style={styles.keyboardParts}>
-							<TouchableOpacity><Text style={{color:'#fff',fontSize:20,padding:20}}>1</Text></TouchableOpacity>
-							<TouchableOpacity><Text style={{color:'#fff',fontSize:20,padding:20}}>2</Text></TouchableOpacity>
-							<TouchableOpacity><Text style={{color:'#fff',fontSize:20,padding:20}}>3</Text></TouchableOpacity>
+							<KeyBoardNumber>1</KeyBoardNumber>
+							<KeyBoardNumber>2</KeyBoardNumber>
+							<KeyBoardNumber>3</KeyBoardNumber>
 						</View>
 						<View style={styles.keyboardParts}>
-							<TouchableOpacity><Text style={{color:'#fff',fontSize:20,padding:20}}>4</Text></TouchableOpacity>
-							<TouchableOpacity><Text style={{color:'#fff',fontSize:20,padding:20}}>5</Text></TouchableOpacity>
-							<TouchableOpacity><Text style={{color:'#fff',fontSize:20,padding:20}}>6</Text></TouchableOpacity>
+							<KeyBoardNumber>4</KeyBoardNumber>
+							<KeyBoardNumber>5</KeyBoardNumber>
+							<KeyBoardNumber>6</KeyBoardNumber>
 						</View>
 						<View style={styles.keyboardParts}>
-							<TouchableOpacity><Text style={{color:'#fff',fontSize:20,padding:20}}>7</Text></TouchableOpacity>
-							<TouchableOpacity><Text style={{color:'#fff',fontSize:20,padding:20}}>8</Text></TouchableOpacity>
-							<TouchableOpacity><Text style={{color:'#fff',fontSize:20,padding:20}}>9</Text></TouchableOpacity>
+							<KeyBoardNumber>7</KeyBoardNumber>
+							<KeyBoardNumber>8</KeyBoardNumber>
+							<KeyBoardNumber>9</KeyBoardNumber>
 						</View>
 						<View style={styles.keyboardParts}>
-							<TouchableOpacity><Text style={{color:'#fff',fontSize:20,padding:20}}>C</Text></TouchableOpacity>
-							<TouchableOpacity><Text style={{color:'#fff',fontSize:20,padding:20}}>0</Text></TouchableOpacity>
-							<TouchableOpacity><Text style={{color:'#fff',fontSize:20,padding:20}}>=</Text></TouchableOpacity>
+							<KeyBoardNumber style={{backgroundColor:'teal'}}>C</KeyBoardNumber>
+							<KeyBoardNumber>0</KeyBoardNumber>
+							<KeyBoardNumber style={{backgroundColor:'teal'}}>=</KeyBoardNumber>
 						</View>
 					</View>
 				</View>
