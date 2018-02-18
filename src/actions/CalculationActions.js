@@ -30,3 +30,13 @@ export const calculate_formula = (num1,num2,form) => {
 		}
 	}
 }
+
+export const add_formula = (name,definition) => {
+	return{
+		type:'add_formula',
+		payload:{
+			name:name,
+			definition:definition,
+		}
+	}
+}

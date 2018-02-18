@@ -4,19 +4,19 @@ const initial_state = {
 	selected_formula:null,
 	formulae:[
 		{
-			name:'add',
+			name:'Add',
 			formula:function(a,b){
 				return(a + b)
 			}
 		},
 		{
-			name:'product',
+			name:'Product',
 			formula:function(a,b){
 				return(a * b)
 			}
 		},
 		{
-			name:'difference',
+			name:'Difference',
 			formula:function(a,b){
 				return(a - b)
 			}
@@ -30,10 +30,13 @@ export default (state = initial_state,action) => {
 	switch (action.type){
 		case 'a_value':
 			return { ...state, a_value:action.payload };
+
 		case 'b_value':
 			return { ...state, b_value:action.payload };
+
 		case 'selected_formula':
 			return { ...state, selected_formula:action.payload };
+
 		case 'calculate_formula':
 			for (var i = 0; i < state.formulae.length; i++) {
 				if(state.formulae[i].name == action.payload.formula){
@@ -42,6 +45,18 @@ export default (state = initial_state,action) => {
 				}
 			}
 			return {...state,result:req_result};
+
+		case 'add_formula':
+			var obj = {
+				name : action.payload.name,
+				formula:function(a,b){
+					return eval(action.payload.definition)
+				}
+			}
+			var req_form = state.formulae;
+			req_form.push(obj)
+			return {...state, formulae:req_form}
+
 		default:
 			return state
 	}

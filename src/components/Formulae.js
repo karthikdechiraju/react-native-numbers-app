@@ -4,10 +4,10 @@ import styles from '../styles/Formulae';
 import { Input, Button } from './common'
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
-import { selectedFormula } from '../actions';
+import { selectedFormula,add_formula,newFormulaName,newFormulaDefinition } from '../actions';
 
 class Formulae extends Component{
-	state = {
+  state = {
     modalVisible: false,
   };
 
@@ -18,6 +18,12 @@ class Formulae extends Component{
   closeModal() {
     this.setState({modalVisible:false});
   }
+
+  addNewFormula(){
+  	this.props.add_formula(this.props.name,this.props.definition)
+  	this.closeModal()
+  }
+
 	render(){
 		return(
 			<View style={styles.mainView}>
@@ -28,7 +34,7 @@ class Formulae extends Component{
 			          	this.props.selectedFormula(item.name)
 			          	Actions.pop()
 			          }}
-			          key={item.name}
+			          keyExtractor={(item, index) => item.id}
 			          style={{paddingVertical: 15,fontSize: 18,backgroundColor:'#fff',borderBottomWidth:1,borderBottomColor:'#eee'}}
 			         >
 			          	{item.name}
@@ -48,10 +54,10 @@ class Formulae extends Component{
 					<View style={{flex:1,display:'flex',justifyContent:'center',alignItems:'center'}}>
 						<View style={{width:300}}>
 							<Text style={{fontSize:25,fontWeight:'600',marginBottom:30}}>Add a new formula</Text>
-							<Input placeholder="Give it a name" />
-							<Input placeholder="Define formula Ex. (a*b)-(a+b)" />
+							<Input value={this.props.name} onChangeText={(text) => this.props.newFormulaName(text) } placeholder="Give it a name" />
+							<Input value={this.props.definition} onChangeText={(text) => this.props.newFormulaDefinition(text) } placeholder="Define formula Ex. (a*b)-(a+b)" />
 							<View style={{flex:1}}>
-								<Button onPress={() => this.closeModal()}>ADD FORMULA</Button>
+								<Button onPress={() => this.addNewFormula()}>ADD FORMULA</Button>
 							</View>
 						</View>
 					</View>
@@ -64,8 +70,10 @@ class Formulae extends Component{
 const mapStateToProps = (state)=>{
 	return{
 		formulae:state.calculate.formulae,
-		selected_formula:state.calculate.selected_formula
+		selected_formula:state.calculate.selected_formula,
+		name:state.formula_addition.name,
+		definition:state.formula_addition.definition
 	}
 }
 
-export default connect(mapStateToProps,{ selectedFormula })(Formulae);
+export default connect(mapStateToProps,{ selectedFormula,add_formula,newFormulaName,newFormulaDefinition })(Formulae);
