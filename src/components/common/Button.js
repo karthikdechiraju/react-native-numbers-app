@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Text, TouchableNativeFeedback, View} from 'react-native';
 
-const Button = ({ onPress, children }) => {
+const Button = ({ onPress, children,style }) => {
 	const { buttonStyle, textStyle } = styles;
 	return(
 		<TouchableNativeFeedback onPress={onPress}>
-			<View style={buttonStyle}><Text style={textStyle}>{children}</Text></View>
+			<View style={[buttonStyle,style]}><Text style={textStyle}>{children}</Text></View>
 		</TouchableNativeFeedback>
 	)
 }
@@ -14,6 +14,7 @@ const styles={
 	buttonStyle:{
 		// flex:1,
 		display:'flex',
+		alignSelf:'stretch',
 		justifyContent:'center',
 		alignItems:'center',
 		backgroundColor:'#607d8b',

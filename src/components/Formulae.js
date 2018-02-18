@@ -3,7 +3,8 @@ import { View, Text, FlatList, TouchableNativeFeedback, Modal, TextInput } from 
 import styles from '../styles/Formulae';
 import { Input, Button } from './common'
 import { Actions } from 'react-native-router-flux';
-
+import { connect } from 'react-redux';
+import { selectedFormula } from '../actions';
 
 class Formulae extends Component{
 	state = {
@@ -22,27 +23,18 @@ class Formulae extends Component{
 			<View style={styles.mainView}>
 				<View style={{flex:9}}>
 					<FlatList
-			          data={[
-			            {key: 'Devin'},
-			            {key: 'Jackson'},
-			            {key: 'James'},
-			            {key: 'Joel'},
-			            {key: 'John'},
-			            {key: 'Jillian'},
-			            {key: 'Jimmy'},
-			            {key: 'Julie'},
-			            {key: 'Devin'},
-			            {key: 'Jackson'},
-			            {key: 'James'},
-			            {key: 'Joel'},
-			            {key: 'John'},
-			            {key: 'Jillian'},
-			            {key: 'Jimmy'},
-			            {key: 'Julie'},
-			          ]}
-			          renderItem={({item}) => <Text onPress={() => Actions.pop()} style={{paddingVertical: 15,fontSize: 18,backgroundColor:'#fff',borderBottomWidth:1,borderBottomColor:'#eee'}}>{item.key}</Text>}
-			          showsVerticalScrollIndicator={false}
-			          style={{marginBottom:10}}
+			          data={this.props.formulae}
+			          renderItem={({item}) => <Text onPress={() => {
+			          	this.props.selectedFormula(item.name)
+			          	Actions.pop()
+			          }}
+			          key={item.name}
+			          style={{paddingVertical: 15,fontSize: 18,backgroundColor:'#fff',borderBottomWidth:1,borderBottomColor:'#eee'}}
+			         >
+			          	{item.name}
+			         </Text>}
+			         showsVerticalScrollIndicator={false}
+			         style={{marginBottom:10}}
 			        />
 				</View>
 				<View style={{flex:1}}>
@@ -69,4 +61,11 @@ class Formulae extends Component{
 	}
 }
 
-export default Formulae;
+const mapStateToProps = (state)=>{
+	return{
+		formulae:state.calculate.formulae,
+		selected_formula:state.calculate.selected_formula
+	}
+}
+
+export default connect(mapStateToProps,{ selectedFormula })(Formulae);

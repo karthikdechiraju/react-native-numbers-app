@@ -4,7 +4,7 @@ import { Text, TouchableOpacity, View} from 'react-native';
 const KeyBoardNumber = ({ onPress, children, style }) => {
 	return(
 		<View style={[styles.viewStyle,style]}>							
-			<TouchableOpacity ><Text style={styles.textStyle}>{children}</Text></TouchableOpacity>
+			<TouchableOpacity onPress={onPress}><Text style={styles.textStyle}>{children}</Text></TouchableOpacity>
 		</View>
 	)
 }

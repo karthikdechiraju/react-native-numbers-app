@@ -1,6 +1,8 @@
 export default {
     mainView: { display: 'flex', flexDirection: 'column', flex: 1 },
     numberView: { flex: 4, backgroundColor: '#eee', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' },
+    normalNumber:{paddingRight:40,textAlign:'center',fontSize:60,color:'#969696'},
+    highlightedNumber: {paddingRight:40,textAlign:'center',fontSize:70,color:'#000'},
     keyboardView: { flex: 6 },
     formulaBar: { display: 'flex', flexDirection: 'row', flex: 1 },
     formulaView: { flex: 6, backgroundColor: '#3d515b' },
