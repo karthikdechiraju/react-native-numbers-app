@@ -1,12 +1,73 @@
 export default {
-    mainView: { display: 'flex', flexDirection: 'column', flex: 1 },
-    numberView: { flex: 4, backgroundColor: '#eee', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' },
-    normalNumber:{paddingRight:40,textAlign:'center',fontSize:60,color:'#969696'},
-    highlightedNumber: {paddingRight:40,textAlign:'center',fontSize:70,color:'#000'},
-    keyboardView: { flex: 6 },
-    formulaBar: { display: 'flex', flexDirection: 'row', flex: 1 },
-    formulaView: { flex: 6, backgroundColor: '#3d515b' },
-    editFormula: { flex: 1, backgroundColor: '#fff', borderWidth: 1, borderColor: '#607d8b', display: 'flex', justifyContent: 'center', alignItems: 'center' },
-    keyboard: { flex: 5, display: 'flex', flexDirection: 'column' },
-    keyboardParts: { display: 'flex', flexDirection: 'row', flex: 1, justifyContent: 'center',alignSelf:'stretch' }
+    mainView:{
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        flexDirection:'column',
+        flex:1,
+        padding:10,
+        backgroundColor:'#fff'
+    },
+    innerMainView:{
+        backgroundColor:'#f1f1f1',
+        alignSelf:'stretch',
+        elevation:4,
+        borderRadius:3
+    },
+    textInputStyle:{
+        minWidth:250,
+        fontSize:25,
+        textAlign:'center',
+        paddingVertical:30,
+        borderBottomWidth:1,
+        borderBottomColor:'#d0d0d0'
+    },
+    textInputStyle2:{
+        minWidth:250,
+        fontSize:25,
+        textAlign:'center',
+        paddingVertical:30,
+        borderTopWidth:1,
+        borderTopColor:'#d0d0d0'
+    },
+    formulaBar:{
+        display:'flex',
+        flexDirection:'row'
+    },
+    formulaView:{
+        flex:6,
+        paddingVertical:10,
+        paddingLeft:10
+    },
+    editView:{
+        flex:1,
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center'
+    },
+    editButtonStyle:{
+        flex:1,
+        borderRadius:0
+    },
+    selectedFormulaStyle:{
+        backgroundColor:'#607d8b',
+        padding:10,
+        borderRadius:3
+    },
+    selectedFormulaTextStyle:{
+        paddingHorizontal:15,
+        color:'#fff',
+        fontWeight:'600'
+    },
+    formulaInnnerView:{
+        padding:10,
+        borderRadius:3
+    },
+    formulaInnnerText:{
+        paddingHorizontal:15,
+        fontWeight:'600'
+    },
+    buttonStyle:{
+        paddingVertical:30
+    }
 }

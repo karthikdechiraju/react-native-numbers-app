@@ -1,3 +1,5 @@
+import { Actions } from 'react-native-router-flux';
+
 const initial_state = { 
 	a_value:null,
 	b_value:null,
@@ -37,6 +39,9 @@ export default (state = initial_state,action) => {
 		case 'selected_formula':
 			return { ...state, selected_formula:action.payload };
 
+		case 'remove_result':
+			return { ...state, result:null };
+
 		case 'calculate_formula':
 			for (var i = 0; i < state.formulae.length; i++) {
 				if(state.formulae[i].name == action.payload.formula){
@@ -56,6 +61,22 @@ export default (state = initial_state,action) => {
 			var req_form = state.formulae;
 			req_form.push(obj)
 			return {...state, formulae:req_form}
+
+		case 'delete_formula':
+			var req_index = null;
+			for (var i = 0; i < state.formulae.length; i++) {
+				if(state.formulae[i].name == action.payload){
+					req_index = i;
+				}
+			}
+			console.log(req_index)
+			if (req_index != null) {
+				var arr = state.formulae;
+				arr.splice(req_index,1)
+				return {...state,formulae:arr}
+			}else{
+				return state
+			}
 
 		default:
 			return state

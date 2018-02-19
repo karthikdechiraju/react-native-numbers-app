@@ -4,26 +4,33 @@ import { Actions } from 'react-native-router-flux';
 import styles from '../styles/Home';
 import { Button } from './common'
 import { connect } from 'react-redux';
-import { calculate_formula, aValue, bValue, selectedFormula } from '../actions';
+import { calculate_formula, aValue, bValue, selectedFormula, removeResult } from '../actions';
 
 class Home extends Component{
 
-	renderEachItem(){
+
+	renderSelection(item){
+		this.props.selectedFormula(item.name)
+		this.props.removeResult()
+	}
+
+
+	renderEachFormualaName(){
 		return this.props.formulae.map(item => {
 			console.log(this.props.selected_formula)
 			if (this.props.selected_formula == item.name) {
 				return(
-					<TouchableOpacity key={item.name} onPress={() => this.props.selectedFormula(item.name)}>
-						<View style={{backgroundColor:'#607d8b',padding:10,borderRadius:3}}>
-							<Text style={{paddingHorizontal:15,color:'#fff'}}>{item.name}</Text>
+					<TouchableOpacity key={item.name} onPress={() => this.renderSelection(item)}>
+						<View style={styles.selectedFormulaStyle}>
+							<Text style={styles.selectedFormulaTextStyle}>{item.name}</Text>
 						</View>
 					</TouchableOpacity>
 				)
 			}else{
 				return(
-					<TouchableOpacity key={item.name} onPress={() => this.props.selectedFormula(item.name)}>
-						<View style={{padding:10,borderRadius:3}}>
-							<Text style={{paddingHorizontal:15}}>{item.name}</Text>
+					<TouchableOpacity key={item.name} onPress={() => this.renderSelection(item)}>
+						<View style={styles.formulaInnnerView}>
+							<Text style={styles.formulaInnnerText}>{item.name}</Text>
 						</View>
 					</TouchableOpacity>
 				)
@@ -34,7 +41,7 @@ class Home extends Component{
 	renderFormulaeList(){
 		return(
 			<ScrollView  horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{alignItems:'center'}}>
-				{this.renderEachItem()}
+				{this.renderEachFormualaName()}
 			</ScrollView>
 		)
 	}
@@ -42,35 +49,34 @@ class Home extends Component{
 	renderButton(){
 		if (this.props.result == null) {
 			return(
-				<Button style={{paddingVertical:30}} onPress={() => this.props.calculate_formula(parseInt(this.props.a_value),parseInt(this.props.b_value),this.props.selected_formula)}>CALCULATE</Button>
+				<Button style={styles.buttonStyle} onPress={() => this.props.calculate_formula(parseInt(this.props.a_value),parseInt(this.props.b_value),this.props.selected_formula)}>CALCULATE</Button>
 			)
 		}else{
 			return(
-				<Button style={{paddingVertical:30}} onPress={() => this.props.calculate_formula(parseInt(this.props.a_value),parseInt(this.props.b_value),this.props.selected_formula)}>{this.props.result}</Button>
+				<Button style={styles.buttonStyle} onPress={() => this.props.calculate_formula(parseInt(this.props.a_value),parseInt(this.props.b_value),this.props.selected_formula)}>{this.props.result}</Button>
 			)
 		}
 	}
 
 	render(){
 		return(
-			<View style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column',flex:1,padding:10,backgroundColor:'#fff'}}>
-				<View style={{backgroundColor:'#f1f1f1',alignSelf:'stretch',elevation:4,borderRadius:3}}>
+			<View style={styles.mainView}>
+				<View style={styles.innerMainView}>
 					
-					<TextInput value={this.props.a_value} onChangeText={(num) => this.props.aValue(num)} keyboardType='numeric' placeholder="First number" underlineColorAndroid="transparent" style={{minWidth:250,fontSize:25,textAlign:'center',paddingVertical:30,borderBottomWidth:1,borderBottomColor:'#d0d0d0'}} />
+					<TextInput value={this.props.a_value} onChangeText={(num) => this.props.aValue(num)} keyboardType='numeric' placeholder="Enter a value" underlineColorAndroid="transparent" style={styles.textInputStyle} />
 
-					<View style={{display:'flex',flexDirection:'row'}}>
-						<View style={{flex:6,paddingVertical:10,paddingLeft:10}}>
+					<View style={styles.formulaBar}>
+						<View style={styles.formulaView}>
 							{this.renderFormulaeList()}
 						</View>
-						<View style={{flex:1,display:'flex',justifyContent:'center',alignItems:'center'}}>
-							<Button style={{flex:1,borderRadius:0}} onPress={()=>Actions.Formulae()} >edit</Button>
+						<View style={styles.editView}>
+							<Button style={styles.editButtonStyle} onPress={()=>Actions.Formulae()} >View</Button>
 						</View>
 					</View>
 					
-					<TextInput value={this.props.b_value} onChangeText={(num) => this.props.bValue(num)} keyboardType='numeric' placeholder="Second number" underlineColorAndroid="transparent" style={{minWidth:250,fontSize:25,textAlign:'center',paddingVertical:30,borderTopWidth:1,borderTopColor:'#d0d0d0'}} />
+					<TextInput value={this.props.b_value} onChangeText={(num) => this.props.bValue(num)} keyboardType='numeric' placeholder="Enter b value" underlineColorAndroid="transparent" style={styles.textInputStyle2} />
 					
 					{this.renderButton()}
-
 				</View>
 			</View>
 		)
@@ -88,4 +94,4 @@ const mapStateToProps = (state)=>{
 	}
 }
 
-export default connect(mapStateToProps,{ calculate_formula, aValue, bValue, selectedFormula })(Home);
+export default connect(mapStateToProps,{ calculate_formula, aValue, bValue, selectedFormula, removeResult })(Home);

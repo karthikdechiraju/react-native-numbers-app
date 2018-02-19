@@ -12,6 +12,13 @@ export const bValue = (num) => {
 	}
 }
 
+export const removeResult = () => {
+	return{
+		type:'remove_result',
+		payload:null
+	}
+}
+
 export const selectedFormula = (text) => {
 	console.log(text)
 	return{
@@ -38,5 +45,12 @@ export const add_formula = (name,definition) => {
 			name:name,
 			definition:definition,
 		}
+	}
+}
+
+export const delete_formula = (name) => {
+	return{
+		type:'delete_formula',
+		payload:name
 	}
 }

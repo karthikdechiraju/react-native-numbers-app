@@ -9,7 +9,7 @@ const RouterComponent = () => {
 		<Router>
 			<Scene key="numbers">
 				<Scene key="Home" component={Home} hideNavBar initial />
-				<Scene key="Formulae" component={Formulae} title="Formulae" />
+				<Scene key="Formulae" onBack={()=>Actions.Home()} component={Formulae} title="Formulae" />
 			</Scene>
 		</Router>
 	)
