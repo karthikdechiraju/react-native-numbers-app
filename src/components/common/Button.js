@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Text, TouchableHighlight, TouchableNativeFeedback , View, Platform} from 'react-native';
 
-const Button = ({ onPress, children,style }) => {
+const Button = ({ onPress, children,style,textStyleProps }) => {
 	const { buttonStyle, textStyle } = styles;
 	
 	if (Platform.OS === 'android') {
        return (
           <TouchableNativeFeedback onPress={onPress} > 
-               <View style={styles.buttonStyle}><Text style={textStyle}>{children}</Text></View>
+               <View style={[styles.buttonStyle,style]}><Text style={[textStyle,textStyleProps]}>{children}</Text></View>
           </TouchableNativeFeedback>    
        )
     } else {
        return (
-          <TouchableHighlight onPress={onPress} style={styles.buttonStyle}> 
+          <TouchableHighlight onPress={onPress} style={[styles.buttonStyle,style]}> 
 			<Text style={textStyle}>{children}</Text>
           </TouchableHighlight>    
        )

@@ -15,6 +15,9 @@ export default (state = initial_state,action) => {
 
 		case 'toggle_modal':
 			return { ...state, modal:action.payload };
+
+		case 'add_formula':
+			return { ...state, name:null,definition:null };
 		
 		default:
 			return state

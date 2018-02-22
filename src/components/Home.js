@@ -66,17 +66,14 @@ class Home extends Component{
 					<TextInput value={this.props.a_value} onChangeText={(num) => this.props.aValue(num)} keyboardType='numeric' placeholder="Enter a value" underlineColorAndroid="transparent" style={styles.textInputStyle} />
 
 					<View style={styles.formulaBar}>
-						<View style={styles.formulaView}>
-							{this.renderFormulaeList()}
-						</View>
-						<View style={styles.editView}>
-							<Button style={styles.editButtonStyle} onPress={()=>Actions.Formulae()} >View</Button>
-						</View>
+						{this.renderFormulaeList()}
 					</View>
 					
 					<TextInput value={this.props.b_value} onChangeText={(num) => this.props.bValue(num)} keyboardType='numeric' placeholder="Enter b value" underlineColorAndroid="transparent" style={styles.textInputStyle2} />
-					
 					{this.renderButton()}
+				</View>
+				<View style={{marginTop:20,alignSelf:'stretch'}}>
+					<Button style={styles.viewFormulaStyle} onPress={() => Actions.Formulae()} textStyleProps={styles.viewFormulaTextStyle}>VIEW FORMULAE</Button>
 				</View>
 			</View>
 		)

@@ -32,12 +32,8 @@ export default {
     },
     formulaBar:{
         display:'flex',
-        flexDirection:'row'
-    },
-    formulaView:{
-        flex:6,
-        paddingVertical:10,
-        paddingLeft:10
+        flexDirection:'row',
+        padding:10
     },
     editView:{
         flex:1,
@@ -69,5 +65,16 @@ export default {
     },
     buttonStyle:{
         paddingVertical:30
+    },
+    viewFormulaStyle:{
+        backgroundColor:'#fff',
+        borderWidth:2,
+        borderColor:'#607d8b',
+        elevation:0
+    },
+    viewFormulaTextStyle:{
+        color:'#607d8b',
+        fontWeight:'600'
     }
+
 }

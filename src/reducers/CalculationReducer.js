@@ -55,7 +55,11 @@ export default (state = initial_state,action) => {
 			var obj = {
 				name : action.payload.name,
 				formula:function(a,b){
-					return eval(action.payload.definition)
+					try {
+						return eval(action.payload.definition)
+					} catch (e) {
+					    return alert("Incorrect definition")
+					}
 				}
 			}
 			var req_form = state.formulae;
