@@ -58,7 +58,7 @@ export default (state = initial_state,action) => {
 					try {
 						return eval(action.payload.definition)
 					} catch (e) {
-					    return alert("Incorrect definition")
+					    return "Incorrect definition";
 					}
 				}
 			}
